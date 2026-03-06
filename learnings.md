@@ -7,8 +7,10 @@ This document tracks the key concepts, technical skills, and architectural patte
 *   **Data Seeding**: Understanding the foundational data model for the factory scenario—Machines, Warning Conditions, Technicians, and Parts Inventory—and how it maps to Azure Cosmos DB.
 *   **Configuration Management**: Managing environment variables securely (using `.env`) to orchestrate local development against cloud resources without hardcoding credentials.
 
-## Challenge 1: Fault Diagnosis Agent
+## Challenge 1: Fault Diagnosis Agent & Anomaly Classification
 *   **Foundry Agents SDK (Python)**: Building a Python-based intelligent agent capable of reasoning over real-time factory data.
+*   **Prompt Engineering**: Experimented with different system prompts to drastically alter the agent's persona and verbosity. We transformed the Anomaly Classification Agent into a rigorous "Senior Data Scientist" that produces highly analytical, professional executive summaries.
+*   **Testing Agent Edge Cases**: Verified agent resilience in the Azure AI Foundry Playground by simulating extreme operating conditions (e.g., 1000°C temperatures) and missing data scenarios (non-existent machines). The agent successfully applied its data scientist persona to gracefully handle these edge cases without hallucinating data.
 *   **Function Calling / Tool Use**: Teaching an LLM to interact with external systems. We implemented and registered custom tools (e.g., fetching thresholds, retrieving live sensor readings) allowing the agent to dynamically gather context before diagnosing issues.
 *   **Knowledge Base Integration (RAG)**: Leveraging Foundry IQ to provide the agent with unstructured domain knowledge (e.g., machinery manuals). This enables the agent to cross-reference live sensor anomalies with documented troubleshooting steps to determine root causes.
 
@@ -27,5 +29,3 @@ This document tracks the key concepts, technical skills, and architectural patte
 *   **.NET Aspire Orchestration**: Operated a polyglot agent workflow where Azure AI Foundry agents (Python) were orchestrated alongside local C# logic in a single unified system, with Aspire acting as the centralized host and telemetry provider.
 *   **Sequential Workflow Pattern**: Deployed a step-by-step sequential orchestration (from Anomaly Classification -> Diagnosis -> Repair -> Scheduling -> Parts Ordering) ensuring strict dependency tracking and deterministic, explainable multi-stage processing. 
 *   **Agent-to-Agent (A2A) Interface**: Leveraged standard invocation boundaries so that agents implemented in various languages or hosting topologies (e.g., Azure API Management or Foundry Agent Service) could fluidly communicate and pass context to each other autonomously.
-
-*(Future challenges will be added here as we progress)*
