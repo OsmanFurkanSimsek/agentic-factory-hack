@@ -12,6 +12,7 @@
     },
     "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
-    }
+    },
+    "remote.autoForwardPortsFallback": 0
 
 }
